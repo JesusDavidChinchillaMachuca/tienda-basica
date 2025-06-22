@@ -1,6 +1,14 @@
 package com.tienda.model;
 
+<<<<<<< HEAD
 import jakarta.persistence.*;
+=======
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+>>>>>>> 98cbc93 (clase producto)
 
 @Entity
 public class Producto {
@@ -17,7 +25,11 @@ public class Producto {
     // Constructor vacío
     public Producto() {}
 
+<<<<<<< HEAD
     // Constructor completo
+=======
+    // Constructor con todos los campos
+>>>>>>> 98cbc93 (clase producto)
     public Producto(String nombre, String descripcion, double precio, int stock) {
         this.nombre = nombre;
         this.descripcion = descripcion;

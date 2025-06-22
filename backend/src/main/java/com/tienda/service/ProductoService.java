@@ -39,3 +39,11 @@ public class ProductoService {
     public boolean eliminarProducto(Long id) {
         if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
+<<<<<<< HEAD
+=======
+            return true;
+        }
+        return false;
+    }
+}
+>>>>>>> 98cbc93 (clase producto)
