@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda Básica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+          background-color: #f8f9fa;
+          font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+          background: #f1f0f6;
+          padding: 80px 0;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 3rem;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          color: #666;
+        }
+
+        .hero .btn {
+          margin-top: 20px;
+          font-weight: bold;
+          padding: 12px 30px;
+        }
+
+        .galeria {
+          padding: 60px 0;
+        }
+
+        .galeria img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+        }
+
+        .galeria img:hover {
+          transform: scale(1.03);
+        }
+
+        .productos {
+          padding: 60px 0;
+          background: #fff;
+        }
+
+        .producto-card {
+          transition: transform 0.2s;
+        }
+
+        .producto-card:hover {
+          transform: scale(1.02);
+          box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+          font-weight: bold;
+        }
+
+        .precio {
+          color: #198754;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>Explora lo Último en Tecnología</h1>
+        <p>Bienvenido a nuestra tienda online, donde encuentras laptops, teclados, mouse y más accesorios de alta gama para llevar tu productividad y entretenimiento al siguiente nivel.</p>
+        <a href="#productos" class="btn btn-primary">Ver catálogo</a>
+    </div>
+</section>
+<!-- Menú de navegación con ícono de usuario -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mt-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">MiTienda</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuTienda">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menuTienda">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#noticias">Novedades</a></li>
+                <!-- Icono de usuario -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalAdmin">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="Usuario" width="24" height="24">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Galería -->
+<section class="galeria">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="https://academia.nubimetrics.com/hubfs/productos-tecnologicos-2.jpg" alt="Producto 1">
+            </div>
+            <div class="col-md-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHuTDskPjmgVDBMYupMNyd74WPFbEp_YtV8A&s" alt="Producto 2">
+            </div>
+            <div class="col-md-4">
+                <img src="https://www.infobae.com/resizer/v2/DWBMPBMFBZANXLS3V6BVKBJ5UA?auth=138101a1eb682629303f48d9d82a3c31c8cded5da184bf3628316962d98a0f52&smart=true&width=992&height=614&quality=85" alt="Producto 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Productos -->
+<section id="productos" class="productos">
+    <div class="container">
+        <h2 class="text-center mb-5">Catálogo de Tecnología Destacada</h2>
+        <div class="row" id="contenedor-productos">
+            <!-- Productos cargados dinámicamente -->
+        </div>
+    </div>
+</section>
+
+<!-- Noticias de Tecnología -->
+<section class="noticias bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">📰 Noticias Tecnológicas Recientes</h2>
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="data:image/png;base64,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" class="card-img-top" alt="Laptop nueva generación">
+                    <div class="card-body">
+                        <h5 class="card-title">Nueva generación de laptops Intel Core Ultra</h5>
+                        <p class="card-text">Los nuevos procesadores ofrecen mejoras de hasta un 40% en rendimiento y eficiencia energética, ideales para gamers y creadores.</p>
+                        <a href="https://www.intel.la/content/www/xl/es/products/details/processors/core-ultra.html" target="_blank" class="btn btn-sm btn-outline-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVB9sNab_HbEsZPmhdi8UgKtldrMTEKjxp3w&s class=card-img-top" alt="Teclado mecánico RGB">
+                    <div class="card-body">
+                        <h5 class="card-title">Teclados mecánicos con switches silenciosos</h5>
+                        <p class="card-text">Nuevos modelos con retroiluminación y respuesta táctil mejorada ya disponibles. Perfectos para trabajar y jugar sin ruido.</p>
+                        <a href="https://www.razer.com/latam-es/mobile/controllers/kishi-line" target="_blank" class="btn btn-sm btn-outline-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://www.gigabyte.com/Images/Assets/Layout/OgImg-Default.png" class="card-img-top" alt="Mouse ergonómico">
+                    <div class="card-body">
+                        <h5 class="card-title">Nuevo mouse inalámbrico ergonómico</h5>
+                        <p class="card-text">Gigabyte lanza un mouse con batería de larga duración y diseño ergonómico para sesiones largas de uso sin fatiga.</p>
+                        <a href="https://www.gigabyte.com/Mouse" target="_blank" class="btn btn-sm btn-outline-primary">Leer más</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Modal de acceso administrador -->
+<div class="modal fade" id="modalAdmin" tabindex="-1" aria-labelledby="modalAdminLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="formLoginAdmin">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAdminLabel">Acceso Administrador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="password" class="form-control" placeholder="Contraseña de administrador" id="claveAdmin" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("formLoginAdmin").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const clave = document.getElementById("claveAdmin").value;
+      if (clave === "admin123") {
+        window.location.href = "admin.html";
+      } else {
+        alert("Contraseña incorrecta");
+      }
+    });
+</script>
+<script>
+    // Cargar productos para cliente
+    async function cargarProductosCliente() {
+        try {
+            const respuesta = await fetch("http://localhost:8080/api/productos");
+            const productos = await respuesta.json();
+            const contenedor = document.getElementById("contenedor-productos");
+            contenedor.innerHTML = "";
+
+            productos.forEach(prod => {
+                contenedor.innerHTML += `
+                  <div class="col-md-4">
+                    <div class="card mb-4 producto-card">
+                      <img src="${prod.imagen}" class="card-img-top" alt="${prod.nombre}">
+                      <div class="card-body">
+                        <h5 class="card-title">${prod.nombre}</h5>
+                        <p class="card-text">${prod.descripcion}</p>
+                        <p class="precio fw-bold">$${prod.precio}</p>
+                      </div>
+                    </div>
+                  </div>
+                `;
+            });
+        } catch (error) {
+            console.error("Error al cargar productos:", error);
+        }
+    }
+
+    // Llamar la función al cargar la página
+    cargarProductosCliente();
+</script>
+<!-- Pie de página -->
+<footer class="bg-dark text-white pt-5 pb-4 mt-5">
+    <div class="container text-md-left">
+        <div class="row">
+
+            <!-- Información de la empresa -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase mb-4 fw-bold">MiTienda Tecnología</h5>
+                <p>Somos una tienda virtual especializada en artículos tecnológicos de alta calidad. Nuestro objetivo es ofrecer lo último en laptops, periféricos y accesorios con el mejor servicio al cliente.</p>
+            </div>
+
+            <!-- Contacto -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase mb-4 fw-bold">Contacto</h5>
+                <p><i class="bi bi-envelope-fill me-2"></i> soporte@mitienda.com</p>
+                <p><i class="bi bi-telephone-fill me-2"></i> +57 320 123 4567</p>
+                <p><i class="bi bi-geo-alt-fill me-2"></i> Calle 123 #45-67, Bogotá, Colombia</p>
+                <p><i class="bi bi-clock-fill me-2"></i> Lunes a Viernes: 9am - 6pm</p>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="col-md-4">
+                <h5 class="text-uppercase mb-4 fw-bold">Síguenos</h5>
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a><br>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i> Instagram</a><br>
+                <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i> Twitter</a><br>
+                <a href="#" class="text-white me-3"><i class="bi bi-youtube"></i> YouTube</a>
+            </div>
+
+        </div>
+
+        <hr class="mt-4">
+        <p class="text-center mb-0">&copy; 2025 MiTienda Tecnología. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>

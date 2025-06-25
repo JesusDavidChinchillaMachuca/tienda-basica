@@ -3,6 +3,7 @@ package com.tienda.controller;
 import com.tienda.model.Producto;
 import com.tienda.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +27,9 @@ public class ProductoController {
     }
 
     @PostMapping
-    public Producto crearProducto(@RequestBody Producto producto) {
-        return productoService.crearProducto(producto);
+    public ResponseEntity<Producto> agregarProducto(@RequestBody Producto producto) {
+        Producto nuevo = productoService.crearProducto(producto);
+        return ResponseEntity.status(201).body(nuevo);
     }
 
     @PutMapping("/{id}")

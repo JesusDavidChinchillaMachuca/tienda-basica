@@ -17,15 +17,18 @@ public class Producto {
     private double precio;
     private int stock;
 
+    private String imagen; // Nuevo campo agregado
+
     // Constructor vacío
     public Producto() {}
 
     // Constructor con todos los campos
-    public Producto(String nombre, String descripcion, double precio, int stock) {
+    public Producto(String nombre, String descripcion, double precio, int stock, String imagen) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
+        this.imagen = imagen;
     }
 
     // Getters y Setters
@@ -63,5 +66,13 @@ public class Producto {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }
